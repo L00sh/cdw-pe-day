@@ -3,7 +3,7 @@ kind: Secret
 apiVersion: v1
 metadata:
   name: gitlab-pull-secret
-  namespace: labone
+  namespace: pedemo-wuzi-user7
 type: kubernetes.io/dockerconfigjson
 data:
   .dockerconfigjson: eyJhdXRocyI6eyJyZWdpc3RyeS5naXRsYWIuY29tIjp7InVzZXJuYW1lIjoicGVkZW1vaWQiLCJwYXNzd29yZCI6ImdsZHQtaFY1aUt5Zzh5Q0FRUGp5NC1mVmEiLCJlbWFpbCI6InBlaWRAY2R3LmNvbSIsImF1dGgiOiJjR1ZrWlcxdmFXUTZaMnhrZEMxb1ZqVnBTM2xuT0hsRFFWRlFhbmswTFdaV1lRPT0ifX19
@@ -12,7 +12,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webby
-  namespace: labone
+  namespace: pedemo-wuzi-user7
 spec:
   replicas: 3
   selector:
@@ -30,7 +30,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: NAMESPACE
-            value: "labone"
+            value: "pedemo-wuzi-user7"
         resources:
           requests:
             cpu: 100m
@@ -45,7 +45,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webby-service
-  namespace: labone
+  namespace: pedemo-wuzi-user7
 spec:
   type: ClusterIP
   selector:
@@ -58,7 +58,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: webby
-  namespace: labone
+  namespace: pedemo-wuzi-user7
 spec:
   tls:
     termination: edge
@@ -73,7 +73,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: condb
-  namespace: labone
+  namespace: pedemo-wuzi-user7
 spec:
   selector:
     matchLabels:
@@ -103,7 +103,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: condb-service
-  namespace: labone
+  namespace: pedemo-wuzi-user7
 spec:
   selector:
     app: condb
