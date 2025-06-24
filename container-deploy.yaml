@@ -41,6 +41,19 @@ spec:
       imagePullSecrets:
         - name: gitlab-pull-secret
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webby-service
+  namespace: labone
+spec:
+  type: ClusterIP
+  selector:
+    app: webby
+  ports:
+    - port: 80
+      targetPort: 9999
+---
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
